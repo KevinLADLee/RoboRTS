@@ -54,3 +54,20 @@ target_link_libraries(behavior_test_node
   )
 add_dependencies(behavior_test_node
   roborts_msgs_generate_messages)
+
+
+add_executable(goal_behavior_test_node
+    ${DecisionProtoHds}
+    ${DecisionProtoSrc}
+    goal_behavior_test.cpp
+    executor/chassis_executor.cpp
+    )
+
+target_link_libraries(goal_behavior_test_node
+    PRIVATE
+    roborts_costmap
+    ${catkin_LIBRARIES}
+    ${PROTOBUF_LIBRARIES}
+    )
+add_dependencies(goal_behavior_test_node
+    roborts_msgs_generate_messages)
